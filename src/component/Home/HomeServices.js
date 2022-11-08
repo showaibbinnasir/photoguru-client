@@ -1,5 +1,6 @@
 import { itMatchesOne } from 'daisyui/src/lib/postcss-prefixer/utils';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import ServiceItem from '../ServiceItem/ServiceItem';
 
 const HomeServices = ({props}) => {
@@ -11,6 +12,9 @@ const HomeServices = ({props}) => {
                 {
                     props.map(item => <ServiceItem key={item.productId} item={item}></ServiceItem>)
                 }
+            </div>
+            <div className='flex justify-center mt-5'>
+                <Link to='/services'><button className='btn btn-secondary'>See all</button></Link>
             </div>
         </div>
     );
