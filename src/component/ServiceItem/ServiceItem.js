@@ -1,6 +1,11 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const ServiceItem = ({item}) => {
+    const navigate = useNavigate();
+    const navigation = (id) =>{
+        navigate(`/products/${id}`)
+    }
     return (
         <div className='flex justify-center'>
            <div className="card w-96 bg-base-100 shadow-xl">
@@ -12,7 +17,7 @@ const ServiceItem = ({item}) => {
                 </h2>
                 <p>{item.description}</p>
                 <div className="card-actions justify-center">
-                    <button className='btn btn-warning'>Explore</button>
+                    <button onClick={()=>navigation(item._id)} className='btn btn-warning'>Explore</button>
                 </div>
             </div>
             </div>
