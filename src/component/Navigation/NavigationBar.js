@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { authContext } from '../../context/AuthProvider/AuthProvider';
 
 const NavigationBar = () => {
+    const {user} = useContext(authContext)
+    console.log(user)
     return (
         <div className='sticky top-0 z-40'>
             <div className="navbar bg-base-100">
