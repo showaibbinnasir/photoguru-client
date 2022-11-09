@@ -21,7 +21,14 @@ const NavigationBar = () => {
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         <li className='font-semibold'><Link to='/'>Home</Link></li>
                         <li className='font-semibold'><Link to='/services'>Services</Link></li>
+                        {
+                        user?.email ? 
+                        <div>
+                            <li className='font-semibold'><Link to='/review'>My review</Link></li>
+                            <li className='font-semibold'><Link to='/addservice'>Add service</Link></li>
+                        </div> : 
                         <li className='font-semibold'><Link to='/about'>About</Link></li>
+                        }
                         <li className='font-semibold'><Link to='/blog'>Blog</Link></li>
                         
                     </ul>
@@ -32,15 +39,23 @@ const NavigationBar = () => {
                     <ul className="menu menu-horizontal p-0">
                     <li className='font-semibold'><Link to='/'>Home</Link></li>
                     <li className='font-semibold'><Link to='/services'>Services</Link></li>
-                    <li className='font-semibold'><Link to='/about'>About</Link></li>
+                    {
+                        user?.email ? 
+                        <div className='flex items-center'>
+                            <li className='font-semibold'><Link to='/review'>My review</Link></li>
+                            <li className='font-semibold'><Link to='/addservice'>Add service</Link></li>
+                        </div> : 
+                        <li className='font-semibold'><Link to='/about'>About</Link></li>
+                    }
+                    
                     <li className='font-semibold'><Link to='/blog'>Blog</Link></li>
                     </ul>
                 </div>
                 <div className="navbar-end">
                     {
                         user?.email ? 
-                        <div className="dropdown dropdown-end">
-                            <label tabIndex={0} className="btn m-1">{user?.email}</label>
+                        <div className="dropdown dropdown-end scale-75">
+                            <label tabIndex={0} className="btn m-1">{user?.displayName}</label>
                             <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
                                 <li><button onClick={handleLogOut}>LogOut</button></li>
                                 

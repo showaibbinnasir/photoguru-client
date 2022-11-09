@@ -15,6 +15,7 @@ const Registration = () => {
             const user = result.user;
             console.log(user);
             handlUpdate(username);
+            window.location.reload()
         })
         .catch(err => console.log(err))
     }

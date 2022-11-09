@@ -30,9 +30,12 @@ const DetailsProduct = () => {
                 <h1 className='text-4xl font-semibold text-warning'>Review</h1>
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-12 my-5 gap-5'>
                 {
-                    review.map(items => <ReviewItems key={items.reviewId} item={items}></ReviewItems>)
+                    review.map(items => <ReviewItems key={items.review_id} item={items}></ReviewItems>)
                 }
                 </div>
+            </div>
+            <div>
+                <button>Submit your Review</button>
             </div>
             
         </div>
