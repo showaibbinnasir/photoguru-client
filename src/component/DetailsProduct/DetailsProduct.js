@@ -35,7 +35,7 @@ const DetailsProduct = () => {
                 </div>
             </div>
             <div>
-                <button>Submit your Review</button>
+                <button className='btn btn-secondary'>Submit your Review</button>
             </div>
             
         </div>
