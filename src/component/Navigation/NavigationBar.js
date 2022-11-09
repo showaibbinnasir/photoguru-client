@@ -3,8 +3,13 @@ import { Link } from 'react-router-dom';
 import { authContext } from '../../context/AuthProvider/AuthProvider';
 
 const NavigationBar = () => {
-    const {user} = useContext(authContext)
-    console.log(user)
+    const {user, logOut} = useContext(authContext)
+    
+    const handleLogOut = () => {
+        logOut()
+        .then(()=> {})
+        .catch(error => console.error(error))
+      }
     return (
         <div className='sticky top-0 z-40'>
             <div className="navbar bg-base-100">
@@ -32,13 +37,24 @@ const NavigationBar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                <div className="dropdown dropdown-end">
-                    <label tabIndex={0} className="btn m-1">Login</label>
-                    <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-                        <li><Link to='/login'>Login</Link></li>
-                        <li><Link to='/registration'>Registration</Link></li>
-                    </ul>
-                    </div>
+                    {
+                        user?.email ? 
+                        <div className="dropdown dropdown-end">
+                            <label tabIndex={0} className="btn m-1">{user?.email}</label>
+                            <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+                                <li><button onClick={handleLogOut}>LogOut</button></li>
+                                
+                            </ul>
+                        </div> : 
+                        <div className="dropdown dropdown-end">
+                            <label tabIndex={0} className="btn m-1">Login</label>
+                            <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+                                <li><Link to='/login'>Login</Link></li>
+                                <li><Link to='/registration'>Registration</Link></li>
+                            </ul>
+                        </div>
+
+                    }
                 </div>
             </div>
         </div>
