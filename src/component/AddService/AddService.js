@@ -1,8 +1,11 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import useTitle from '../Hook/useTitle';
 
 const AddService = () => {
     const data = useLoaderData()
+    useTitle('Photoguru - Add service')
     const handleFormData = (event) => {
         event.preventDefault()
         const form = event.target;
@@ -13,7 +16,7 @@ const AddService = () => {
         const description = form.description.value;
         const details = {productName, img, rating, description, productId}
         
-        fetch('http://localhost:5000/allproducts', {
+        fetch('http://photoguru-server.vercel.app/allproducts', {
             method: 'POST',
             headers : {
               'content-type' : 'application/json'
@@ -24,6 +27,7 @@ const AddService = () => {
           .then(data => console.log(data))
           .catch(err => console.log(err))
           form.reset()
+          toast.success("service added successfully")
     }
     return (
         <div>

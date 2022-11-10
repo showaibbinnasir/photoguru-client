@@ -3,12 +3,14 @@ import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { Link, useLoaderData, useNavigate } from 'react-router-dom';
 import ReviewItems from '../ReviewItems/ReviewItems';
 import 'react-photo-view/dist/react-photo-view.css';
+import useTitle from '../Hook/useTitle';
 
 const DetailsProduct = () => {
+    useTitle('Photoguru - Details product')
     const [review, setReview] = useState([])
     const navigate = useNavigate();
     const data = useLoaderData();
-    const uri = `http://localhost:5000/reviews?id=${data.productId}`
+    const uri = `http://photoguru-server.vercel.app/reviews?id=${data.productId}`
     useEffect(()=>{
         fetch(uri)
         .then(res => res.json())

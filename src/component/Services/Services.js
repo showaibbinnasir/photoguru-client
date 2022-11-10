@@ -1,9 +1,11 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
+import useTitle from '../Hook/useTitle';
 import ServiceItem from '../ServiceItem/ServiceItem';
 
 const Services = () => {
     const data = useLoaderData();
+    useTitle('Photoguru - services')
     return (
         <div className='mt-5'>
             <h1 className='text-4xl font-semibold text-warning mt-5'>Our Services</h1>

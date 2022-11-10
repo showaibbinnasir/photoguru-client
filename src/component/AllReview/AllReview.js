@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import AllReviewItem from '../AllReviewItem/AllReviewItem';
+import useTitle from '../Hook/useTitle';
 
 const AllReview = () => {
+    useTitle('Photoguru - All review')
     const [review, setReview] = useState([])
     useEffect(()=>{
-        fetch('http://localhost:5000/reviews')
+        fetch('http://photoguru-server.vercel.app/reviews')
         .then(res => res.json())
         .then(data => setReview(data))
     },[])

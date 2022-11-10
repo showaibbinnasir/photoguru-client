@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const AllReviewItem = ({item, review, setReview}) => {
     const navigate = useNavigate();
@@ -10,7 +11,7 @@ const AllReviewItem = ({item, review, setReview}) => {
         
         const agree = window.confirm(`are you sure to delete ${item.username}?`)
         if(agree){
-            fetch(`http://localhost:5000/review/${item._id}`, {
+            fetch(`http://photoguru-server.vercel.app/review/${item._id}`, {
                 method: 'DELETE'
             })
             .then(res => res.json())
@@ -18,6 +19,7 @@ const AllReviewItem = ({item, review, setReview}) => {
                 if(data.deletedCount > 0){
                     const remainingUsers = review.filter(usr => usr._id !== item._id);
                     setReview(remainingUsers);
+                    toast.success("review deleted successfully")
                 }
             })
         }

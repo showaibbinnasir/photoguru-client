@@ -20,11 +20,11 @@ const router = createBrowserRouter([
         children : [
             {
                 path : '/',
-                loader : ()=> fetch('http://localhost:5000/products'),
+                loader : ()=> fetch('https://photoguru-server.vercel.app/products'),
                 element : <Home></Home>
             },{
                 path : '/services',
-                loader: ()=> fetch('http://localhost:5000/allproducts'),
+                loader: ()=> fetch('https://photoguru-server.vercel.app/allproducts'),
                 element : <Services></Services>
             },{
                 path : '/about',
@@ -40,7 +40,7 @@ const router = createBrowserRouter([
                 element : <Registration></Registration>
             },{
                 path : '/products/:id',
-                loader : ({params})=> fetch(`http://localhost:5000/allproducts/${params.id}`),
+                loader : ({params})=> fetch(`https://photoguru-server.vercel.app/allproducts/${params.id}`),
                 element : <DetailsProduct></DetailsProduct>
             },{
                 path : '/review',
@@ -50,11 +50,11 @@ const router = createBrowserRouter([
             {
                 path : '/addservice',
                 element : <AddService></AddService>,
-                loader : ()=> fetch('http://localhost:5000/allproducts')
+                loader : ()=> fetch('https://photoguru-server.vercel.app/allproducts')
             },{
                 path : '/addreview/:id',
                 element : <PrivateRouter><AddReview></AddReview></PrivateRouter>,
-                loader : ({params}) => fetch(`http://localhost:5000/addreview/${params.id}`)
+                loader : ({params}) => fetch(`https://photoguru-server.vercel.app/addreview/${params.id}`)
             },{
                 path : '/reviewupdate/:id',
                 element : <UpdateReview></UpdateReview>

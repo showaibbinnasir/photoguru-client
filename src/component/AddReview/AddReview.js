@@ -1,12 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { authContext } from '../../context/AuthProvider/AuthProvider';
+import useTitle from '../Hook/useTitle';
 
 const AddReview = () => {
     const {user} = useContext(authContext)
+    useTitle('Photoguru - Add review')
     const [review, setReview] = useState([]);
     useEffect(()=>{
-        fetch('http://localhost:5000/reviews')
+        fetch('http://photoguru-server.vercel.app/reviews')
         .then(res => res.json())
         .then(data => setReview(data))
     }, [])
@@ -36,6 +39,7 @@ const AddReview = () => {
           .then(data => console.log(data))
           .catch(err => console.log(err))
           form.reset()
+          toast.success("Review added successfully")
 
     }
     return (

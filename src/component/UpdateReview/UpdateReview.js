@@ -1,6 +1,8 @@
 import React from 'react';
+import useTitle from '../Hook/useTitle';
 
 const UpdateReview = () => {
+    useTitle('Photoguru - Update Review')
     const handleFormData = event => {
         alert('clicked')
     }

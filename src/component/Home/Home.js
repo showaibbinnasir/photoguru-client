@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
+import useTitle from '../Hook/useTitle';
 import './Home.css'
 import HomeServices from './HomeServices';
 
 const Home = () => {
     const data = useLoaderData();
+    useTitle('Photoguru')
     
     return (
         <div>

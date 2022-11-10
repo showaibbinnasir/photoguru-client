@@ -1,9 +1,11 @@
 import React, { useContext } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { authContext } from '../../context/AuthProvider/AuthProvider';
+import useTitle from '../Hook/useTitle';
 
 const Registration = () => {
     const {createUser, updateUser} = useContext(authContext);
+    useTitle('Photoguru - Registration')
     const navigate = useNavigate()
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
