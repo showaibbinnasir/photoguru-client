@@ -11,7 +11,7 @@ const AllReviewItem = ({item, review, setReview}) => {
         
         const agree = window.confirm(`are you sure to delete ${item.username}?`)
         if(agree){
-            fetch(`http://photoguru-server.vercel.app/review/${item._id}`, {
+            fetch(`https://photoguru-server.vercel.app/review/${item._id}`, {
                 method: 'DELETE'
             })
             .then(res => res.json())

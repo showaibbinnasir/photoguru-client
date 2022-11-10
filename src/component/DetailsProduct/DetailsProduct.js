@@ -10,7 +10,7 @@ const DetailsProduct = () => {
     const [review, setReview] = useState([])
     const navigate = useNavigate();
     const data = useLoaderData();
-    const uri = `http://photoguru-server.vercel.app/reviews?id=${data.productId}`
+    const uri = `https://photoguru-server.vercel.app/reviews?id=${data.productId}`
     useEffect(()=>{
         fetch(uri)
         .then(res => res.json())

@@ -7,7 +7,7 @@ const AllReview = () => {
     useTitle('Photoguru - All review')
     const [review, setReview] = useState([])
     useEffect(()=>{
-        fetch('http://photoguru-server.vercel.app/reviews')
+        fetch('https://photoguru-server.vercel.app/reviews')
         .then(res => res.json())
         .then(data => setReview(data))
     },[])

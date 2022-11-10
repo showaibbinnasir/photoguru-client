@@ -16,7 +16,7 @@ const AddService = () => {
         const description = form.description.value;
         const details = {productName, img, rating, description, productId}
         
-        fetch('http://photoguru-server.vercel.app/allproducts', {
+        fetch('https://photoguru-server.vercel.app/allproducts', {
             method: 'POST',
             headers : {
               'content-type' : 'application/json'
