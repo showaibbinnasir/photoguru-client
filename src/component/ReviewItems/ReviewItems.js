@@ -6,7 +6,7 @@ const ReviewItems = ({item}) => {
             <div className="card w-96 bg-secondary text-primary-content">
                 <div className="card-body">
                     <div>
-                        <img className='h-24' src={item.userImg} alt="" />
+                        <img className='h-24 rounded-full' src={item.userImg} alt="" />
                     </div>
                     <h2 className="card-title">{item.username}</h2>
                     <p>{item.userDes}</p>

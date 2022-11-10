@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData, useNavigate } from 'react-router-dom';
 import ReviewItems from '../ReviewItems/ReviewItems';
 
 const DetailsProduct = () => {
     const [review, setReview] = useState([])
-    
+    const navigate = useNavigate();
     const data = useLoaderData();
     const uri = `http://localhost:5000/reviews?id=${data.productId}`
     useEffect(()=>{
@@ -14,6 +14,9 @@ const DetailsProduct = () => {
     }, [uri])
     console.log(data)
     console.log(review)
+    const handleSubmitReviewBtn = id => {
+        navigate(`/addreview/${id}`)
+    }
     return (
         <div className='mt-5'>
             <h1 className='text-4xl font-semibold text-warning'>Service</h1>
@@ -35,7 +38,7 @@ const DetailsProduct = () => {
                 </div>
             </div>
             <div>
-                <button className='btn btn-secondary'>Submit your Review</button>
+                <button onClick={()=> handleSubmitReviewBtn(data._id)} className='btn btn-secondary'>Submit your Review</button>
             </div>
             
         </div>

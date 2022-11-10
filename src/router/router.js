@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import AddReview from "../component/AddReview/AddReview";
 import AllReview from "../component/AllReview/AllReview";
 import DetailsProduct from "../component/DetailsProduct/DetailsProduct";
 import Home from "../component/Home/Home";
@@ -40,11 +41,16 @@ const router = createBrowserRouter([
                 element : <DetailsProduct></DetailsProduct>
             },{
                 path : '/review',
-                element : <PrivateRouter><AllReview></AllReview></PrivateRouter>
+                element : <PrivateRouter><AllReview></AllReview></PrivateRouter>,
+                loader : ()=> fetch('http://localhost:5000/reviews')
             },
             {
                 path : '/addservice',
                 element : <div>Service adding page</div>
+            },{
+                path : '/addreview/:id',
+                element : <PrivateRouter><AddReview></AddReview></PrivateRouter>,
+                loader : ({params}) => fetch(`http://localhost:5000/addreview/${params.id}`)
             }
         ]
     }
