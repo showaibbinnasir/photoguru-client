@@ -1,8 +1,7 @@
 import React from 'react';
 
-const AllReviewItem = ({item}) => {
+const AllReviewItem = ({item, review, setReview}) => {
     const handleDeleteButton = (item) => {
-        alert(item._id)
         const agree = window.confirm(`are you sure to delete ${item.username}?`)
         if(agree){
             fetch(`http://localhost:5000/review/${item._id}`, {
@@ -10,7 +9,10 @@ const AllReviewItem = ({item}) => {
             })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                if(data.deletedCount > 0){
+                    const remainingUsers = review.filter(usr => usr._id !== item._id);
+                    setReview(remainingUsers);
+                }
             })
         }
     }

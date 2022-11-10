@@ -1,5 +1,7 @@
 import React from 'react';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { useNavigate } from 'react-router-dom';
+import 'react-photo-view/dist/react-photo-view.css';
 
 const ServiceItem = ({item}) => {
     const navigate = useNavigate();
@@ -9,7 +11,15 @@ const ServiceItem = ({item}) => {
     return (
         <div className='flex justify-center'>
            <div className="card w-96 bg-base-100 shadow-xl">
-            <figure><img src={item.img} alt="Shoes" /></figure>
+            <figure><PhotoProvider>
+      <div className="foo">
+        
+          <PhotoView src={item.img}>
+            <img src={item.img} alt="" />
+          </PhotoView>
+        
+      </div>
+    </PhotoProvider></figure>
             <div className="card-body">
                 <h2 className="card-title">
                 {item.productName}
