@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { Link, useLoaderData, useNavigate } from 'react-router-dom';
 import ReviewItems from '../ReviewItems/ReviewItems';
+import 'react-photo-view/dist/react-photo-view.css';
 
 const DetailsProduct = () => {
     const [review, setReview] = useState([])
@@ -26,7 +28,15 @@ const DetailsProduct = () => {
                         <h2 className="card-title">{data.productName}</h2>
                         <p>{data.description}</p>
                     </div>
-                    <figure><img src={data.img} alt="Shoes" /></figure>
+                    <figure><PhotoProvider>
+      <div className="foo">
+        
+          <PhotoView src={data.img}>
+            <img src={data.img} alt="" />
+          </PhotoView>
+        
+      </div>
+    </PhotoProvider></figure>
                 </div>
             </div>
             <div className='mt-5'>

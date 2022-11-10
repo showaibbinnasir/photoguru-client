@@ -1,7 +1,13 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const AllReviewItem = ({item, review, setReview}) => {
+    const navigate = useNavigate();
+    const handleUpdateBtn = (service) =>{
+        navigate(`/reviewupdate/${service._id}`)
+    }
     const handleDeleteButton = (item) => {
+        
         const agree = window.confirm(`are you sure to delete ${item.username}?`)
         if(agree){
             fetch(`http://localhost:5000/review/${item._id}`, {
@@ -24,8 +30,9 @@ const AllReviewItem = ({item, review, setReview}) => {
             <h1 className='text-2xl font-semibold'>{item.username}</h1>
             <h1>{item.rating}</h1>
             <h1>{item.userDes}</h1>
-            <div className='mt-5'>
+            <div className='mt-5 flex gap-5 justify-center'>
                 <button onClick={()=>handleDeleteButton(item)} className='btn btn-danger'>Delete</button>
+                <button onClick={()=>handleUpdateBtn(item)} className='btn btn-warning'>Update</button>
             </div>
             
         </div>
