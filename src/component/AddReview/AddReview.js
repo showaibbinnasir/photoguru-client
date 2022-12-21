@@ -28,7 +28,7 @@ const AddReview = () => {
         const userDes = form.description.value;
         const details = {serviceName, username, userImg, review_id, productId, rating, userDes}
         console.log(details);
-        fetch('http://localhost:5000/reviews', {
+        fetch('https://photoguru-server.vercel.app/reviews', {
             method: 'POST',
             headers : {
               'content-type' : 'application/json'

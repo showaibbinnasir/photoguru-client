@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { authContext } from '../../context/AuthProvider/AuthProvider';
 import useTitle from '../Hook/useTitle';
 
@@ -23,7 +24,7 @@ const Registration = () => {
             window.location.reload();
             navigate(from ,{replace : true})
         })
-        .catch(err => console.log(err))
+        .catch(err => toast.error(err.message))
     }
 
     const handlUpdate = (name)=>{
